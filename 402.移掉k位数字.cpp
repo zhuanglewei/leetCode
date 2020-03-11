@@ -10,41 +10,22 @@ using std::string;
 class Solution {
 public:
     string removeKdigits(string num, int k) {
-        if(num.size() <= k)
+        if(num.size() <= k) return "0";
+        string res="";
+        int len=num.size()-k;
+        for(char c : num)
         {
-            return "0";
-        }
-        
-        for(int i = 0; i<k; i++)
-        {
-            int mid = i+1;
-            while(mid < num.size() && num[i] == num[mid])
+            while(k&&res.size()&&res.back()>c)
             {
-                mid++;
+                res.pop_back();
+                --k;
             }
-            if(num[i] < num[mid])
-            {
-                int right = mid;
-                while(right < num.size() && num[mid] == num[right])
-                {
-                    right++;
-                }
-                if(num[mid] < num[right])
-                {
-                    num[right] = num[mid];
-                    num[mid] = num[i];
-                }
-                else
-                {
-                    num[mid] = num[i];
-                }
-            }
+            res.push_back(c);
         }
-        while(num[k] == '0' && k < num.size()-1)
-        {
-            k++;
-        }
-        return num.substr(k);
+        res.resize(len);
+        int i=0;
+        while(i < len-1 && res[i]=='0') i++;
+        return res.substr(i);
     }
 };
 // @lc code=end
