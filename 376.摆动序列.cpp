@@ -27,7 +27,6 @@ public:
                     break;  
                 }   
                 else{
-                    lastCount = nums[i];
                     state = nums[i] > lastCount ? 1 : -1;
                     res++;
                 }
@@ -37,7 +36,6 @@ public:
                 {
                     res++;
                     state = -1;
-                    lastCount = nums[i];
                 }
                 break;
             case -1:
@@ -45,11 +43,11 @@ public:
                 {
                     res++;
                     state = 1;
-                    lastCount = nums[i];
                 }
             default:
                 break;
             }
+            lastCount = nums[i];
         }
         return res;
     }
