@@ -15,13 +15,9 @@ public:
         for(auto i : s)
         {
             if(i >= g[res])
-            {
                 res++;
-            }
             if(res == g.size())
-            {
                 break;
-            }
         }
         return res;
     }
