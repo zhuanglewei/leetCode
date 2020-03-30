@@ -33,18 +33,17 @@ using std::string;
 class Solution {
 public:
     int lengthOfLastWord(string s) {
-        int res = 0;
+        int res=0;
         bool reset = false;
-        for(int i = 0; i<s.size(); i++){
-            if(s[i] == ' '){
+        for(auto c : s){
+            if(c == ' '){
                 reset = true;
             }
-            else
-            {
-                if(reset){
-                    res = 0;
-                    reset = false;
-                }
+            else if(reset){
+                reset = false;
+                res = 1;
+            }
+            else{
                 res++;
             }
         }
